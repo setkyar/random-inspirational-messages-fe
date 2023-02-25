@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Inspiration Generator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+            margin-top: 2em;
+        }
+        button {
+            font-size: 1.5em;
+            padding: 0.5em 1em;
+            margin-top: 2em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="message">Click the button for inspiration!</h1>
+    <button onclick="getMessage()">Get Inspiration</button>
+
+    <script>
+        function getMessage() {
+            // Send a GET request to the API endpoint
+            fetch("http://aa251af306d6243058feca2dabc91d21-19736692.ap-southeast-1.elb.amazonaws.com/message")
+                .then(response => response.json())
+                .then(data => {
+                    // Set the message text to the response value
+                    document.getElementById("message").textContent = data.text;
+
+                    // Generate a random background color
+                    let red = Math.floor(Math.random() * 256);
+                    let green = Math.floor(Math.random() * 256);
+                    let blue = Math.floor(Math.random() * 256);
+                    let color = `rgb(${red}, ${green}, ${blue})`;
+
+                    // Set the background color of the body
+                    document.body.style.backgroundColor = color;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        }
+    </script>
+</body>
+</html>
