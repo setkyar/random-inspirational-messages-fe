@@ -1,5 +1,7 @@
 # random-inspirational-messages
 
+This is part of EKS POC deployment. Please check [this repo](https://github.com/setkyar/random-inspirational-messages-infra) for idea.
+
 Printing out random inspirational messages.
 
 ### Build
